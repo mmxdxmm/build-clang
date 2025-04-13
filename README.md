@@ -1,68 +1,40 @@
-、、、
+克隆仓库
+
 git clone -b man https://github.com/mmxdxmm/build-clang.git build
-、、、
-、、、
+
+
+进入项目
+
 cd ./build/src/
-、、、
-、、、
-wget https://android.googlesource.com/toolchain/llvm-project
+
+
+下载并解压源码
+
+wget https://github.com/mmxdxmm/build-clang/releases/download/clang-r547379/llvm-project.zip -O llvm-project.zip
+
+unzip llvm-project.zip
+
+
+Android补丁仓库
 
 git clone https://android.googlesource.com/toolchain/llvm_android
 
-然后参考这https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main
-实际编译好的x64的工具链的manifest_xxxxx.xml，用git checkout检出相应的提交，然后同理检出llvm_android中相对应的提交，并将补丁运用于llvm-project，编译。
-以clang-r498229b为例
+已编译工具参考，补丁请查看xxx_info.md文件https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main
 
-cd llvm-project
+使用
+git checkout
+切换至提交，如
 
-git checkout e34ed7d63863b45858e74126edaa738e75887800
+git checkout f142f8afe21bceb00fb495468aa0b5043e98c419
+
+https://github.com/llvm/llvm-project/commits/f142f8afe21bceb00fb495468aa0b5043e98c419
+
+
+回到仓库根目录，运行脚本
 
 cd ..
 
-cd llvm_android
-
-git checkout 67b7374615b157459d52e8e145745c9ee6dc86aa
-
-cp -R ./patches/*.patch ../llvm-project/
-
-cp -R ./patches/cherry/*.patch ../llvm-project/
-
-cd ../llvm-project/
-
-
-#!/bin/bash  
-for file in *.patch ;  
-do  
-patch -p1 < $file ;  
-done  
-
-
-cd ...
-
-chmod +x build.sh
-
-./build.sh
-
-3.最终在三星s10 骁龙855的lxc ubuntu 22.04 总耗时间1小时44分编译完成最终会安装在 /root/Toolchain/clang-r498229b,打包测试。
-
-cd /root/Toolchain
-
-XZ_OPT="-9" tar --warning=no-file-changed -cJf clang-r498229b.tar.xz clang-r498229b
-
-或者安装多线程打包工具pixz
-apt install pixz
-
-tar -I pixz -cf clang-r498229b.tar.xz clang-r498229b
-
-
-
-
-
-
-
-
-
-
+bash build.sh
 
 
 
