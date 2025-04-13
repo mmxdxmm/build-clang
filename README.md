@@ -1,19 +1,27 @@
-克隆仓库
+1、克隆仓库
 
 git clone -b man https://github.com/mmxdxmm/build-clang.git build
 
 
-进入项目
+2、进入项目
 
 cd ./build/src/
 
 
-下载并解压源码
+3、下载并解压源码
 
 wget https://github.com/mmxdxmm/build-clang/releases/download/clang-r547379/llvm-project.zip -O llvm-project.zip
 
 unzip llvm-project.zip
 
+4、回到仓库根目录，运行脚本
+
+cd ..
+
+bash build.sh
+
+
+5、其他:
 
 Android补丁仓库
 
@@ -21,20 +29,19 @@ git clone https://android.googlesource.com/toolchain/llvm_android
 
 已编译工具参考，补丁请查看xxx_info.md文件https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main
 
+自己打补丁则下载clang源码
+
+git clone https://android.googlesource.com/toolchain/llvm-project
+
 使用
 git checkout
 切换至提交，如
 
 git checkout f142f8afe21bceb00fb495468aa0b5043e98c419
 
-https://github.com/llvm/llvm-project/commits/f142f8afe21bceb00fb495468aa0b5043e98c419
+注：https://github.com/llvm/llvm-project/commits/f142f8afe21bceb00fb495468aa0b5043e98c419
 
 
-回到仓库根目录，运行脚本
-
-cd ..
-
-bash build.sh
 
 
 
