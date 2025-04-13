@@ -12,7 +12,7 @@
 
 git clone -b man https://github.com/mmxdxmm/build-clang.git build
 
-cd ./tc-build/src/
+cd ./build/src/
 
 git clone https://android.googlesource.com/toolchain/llvm-project
 
