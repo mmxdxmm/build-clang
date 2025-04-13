@@ -115,9 +115,10 @@ class HostTools:
         return Path(tool)
 
     def generate_versioned_binaries(self):
+        cmake_lists_path = Path('./src/llvm-project/llvm/CMakeLists.txt')
         try:
-            cmakelists_txt = tc_build.utils.curl(
-                'https://raw.githubusercontent.com/llvm/llvm-project/main/llvm/CMakeLists.txt')
+            with open(cmake_lists_path, 'r') as f:
+                 cmakelists_txt = f.read()
         except subprocess.CalledProcessError:
             llvm_tot_ver = 16
         else:
