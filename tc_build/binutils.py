@@ -14,7 +14,9 @@ class BinutilsBuilder(Builder):
     def __init__(self):
         super().__init__()
 
-        self.cflags = ['-O2']
+        self.cflags = ['-O3',
+        '-Wno-unused-command-line-argument',
+        ]
         self.configure_flags = [
             '--disable-compressed-debug-sections',
             '--disable-gdb',
@@ -31,8 +33,8 @@ class BinutilsBuilder(Builder):
         if tc_build.utils.libc_is_musl():
             self.configure_flags.append('--disable-gprofng')
         self.configure_vars = {
-            'CC': 'gcc',
-            'CXX': 'g++',
+            'CC': 'clang',
+            'CXX': 'clang++',
         }
         self.extra_targets = []
         self.native_arch = ''
