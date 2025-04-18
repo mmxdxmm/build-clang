@@ -513,6 +513,10 @@ if args.bolt and not final.can_use_perf():
 
 # Figure out unconditional cmake defines from input
 common_cmake_defines = {}
+common_cmake_defines["CMAKE_C_FLAGS"] = "--target=aarch64-linux-android33 --sysroot=./android-ndk-r28/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+common_cmake_defines["CMAKE_CXX_FLAGS"] = "--target=aarch64-linux-android33 --sysroot=./android-ndk-r28/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+common_cmake_defines["DLLVM_DEFAULT_TARGET_TRIPLE"] = "aarch64-linux-android33"
+
 if args.assertions:
     common_cmake_defines['LLVM_ENABLE_ASSERTIONS'] = 'ON'
 if args.vendor_string:
