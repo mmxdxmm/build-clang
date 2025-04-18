@@ -515,6 +515,9 @@ if args.bolt and not final.can_use_perf():
 common_cmake_defines = {}
 common_cmake_defines["CMAKE_C_FLAGS"] = "--target=aarch64-linux-musl"
 common_cmake_defines["CMAKE_CXX_FLAGS"] = "--target=aarch64-linux-musl"
+common_cmake_defines["CMAKE_EXE_LINKER_FLAGS"] = "-fuse-ld=ld"
+common_cmake_defines["CMAKE_SHARED_LINKER_FLAGS"] = "-fuse-ld=ld"
+common_cmake_defines["CMAKE_MODULE_LINKER_FLAGS"] = "-fuse-ld=ld"
 
 if args.assertions:
     common_cmake_defines['LLVM_ENABLE_ASSERTIONS'] = 'ON'
