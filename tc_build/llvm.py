@@ -264,12 +264,7 @@ class LLVMBuilder(Builder):
         # script's environment, in case the builder intends to distribute the
         # toolchain, as this may not be portable. Since distribution is not a
         # primary goal of tc-build, this is not abstracted further.
-        if shutil.which('clang') and not os.environ.get('DISTRIBUTING'):
-            default_target_triple = subprocess.run(['clang', '-print-target-triple'],
-                                                   capture_output=True,
-                                                   check=True,
-                                                   text=True).stdout.strip()
-            self.cmake_defines['LLVM_DEFAULT_TARGET_TRIPLE'] = default_target_triple
+        
 
         cmake_cmd += [f'-D{key}={self.cmake_defines[key]}' for key in sorted(self.cmake_defines)]
 
