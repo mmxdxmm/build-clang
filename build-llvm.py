@@ -513,8 +513,8 @@ if args.bolt and not final.can_use_perf():
 
 # Figure out unconditional cmake defines from input
 common_cmake_defines = {}
-common_cmake_defines["CMAKE_C_FLAGS"] = "--target=aarch64-linux-gnu"
-common_cmake_defines["CMAKE_CXX_FLAGS"] = "--target=aarch64-linux-gnu"
+common_cmake_defines["CMAKE_C_FLAGS"] = "--target=aarch64-linux-musl"
+common_cmake_defines["CMAKE_CXX_FLAGS"] = "--target=aarch64-linux-musl"
 
 if args.assertions:
     common_cmake_defines['LLVM_ENABLE_ASSERTIONS'] = 'ON'
