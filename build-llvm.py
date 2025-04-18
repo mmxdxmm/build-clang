@@ -513,7 +513,7 @@ if args.bolt and not final.can_use_perf():
 
 # Figure out unconditional cmake defines from input
 common_cmake_defines = {}
-common_cmake_defines["DLLVM_DEFAULT_TARGET_TRIPLE"] = "aarch64-linux-android33"
+common_cmake_defines["DLLVM_DEFAULT_TARGET_TRIPLE"] = "aarch64-linux-musl"
 
 if args.assertions:
     common_cmake_defines['LLVM_ENABLE_ASSERTIONS'] = 'ON'
