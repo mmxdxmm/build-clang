@@ -1,3 +1,5 @@
+此为python命令编译版本，纯sh命令编译请选仓库的sh分支
+
 1、克隆仓库
 
 git clone -b man https://github.com/mmxdxmm/build-clang.git build
