@@ -15,10 +15,10 @@ cmake -G "Ninja" \
 -DLLVM_ENABLE_PROJECTS="clang;lld;libc;compiler-rt" \
 -DCMAKE_CXX_COMPILER=$(which clang++) \
 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
--DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-" \
+-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument" \
 -DCMAKE_C_COMPILER=$(which clang) \
 -DCMAKE_C_COMPILER_LAUNCHER=ccache \
--DCMAKE_C_FLAGS="-Wno-unused-command-line-argument ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-" \
+-DCMAKE_C_FLAGS="-Wno-unused-command-line-argument" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
