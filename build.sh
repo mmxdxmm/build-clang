@@ -39,11 +39,18 @@ cmake -G "Ninja" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
+-DARCH=arm64 \
+-DSUBARCH=arm64 \
+-DLLVM=1 \
+-DCROSS_COMPILE=aarch64-linux-gnu- \
+-DCROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+-DCLANG_TRIPLE=aarch64-linux-gnu- \
+-B tmp \
 ./llvm-project/llvm \
 #-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 #-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 
-ninja -j8
+cd tmp && ninja -j8
 
 #选项解析
 #export PATH:设置环境变量

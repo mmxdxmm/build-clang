@@ -22,9 +22,16 @@ cmake -G "Ninja" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
+-DARCH=arm64 \
+-DSUBARCH=arm64 \
+-DLLVM=1 \
+-DCROSS_COMPILE=aarch64-linux-gnu- \
+-DCROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+-DCLANG_TRIPLE=aarch64-linux-gnu- \
+-B tmp \
 ./llvm-project/llvm
 
-ninja -j8
+cd tmp && ninja -j8
 
 #选项解析
 #export PATH:设置环境变量

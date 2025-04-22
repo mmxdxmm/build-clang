@@ -22,10 +22,16 @@ cmake -G "Unix Makefiles" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
+-DARCH=arm64 \
+-DSUBARCH=arm64 \
+-DLLVM=1 \
+-DCROSS_COMPILE=aarch64-linux-gnu- \
+-DCROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+-DCLANG_TRIPLE=aarch64-linux-gnu- \
+-B tmp \
 ./llvm-project/llvm
 
-make -j8 \
-ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-
+cd tmp && make -j8
 
 #选项解析
 #export PATH:设置环境变量
