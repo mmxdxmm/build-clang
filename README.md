@@ -96,8 +96,10 @@
 
 2、克隆仓库
 
-  ```git clone -b sh https://github.com/mmxdxmm/build-clang.git build
   ```
+  git clone -b sh https://github.com/mmxdxmm/build-clang.git build
+  ```
+
 3、进入项目
 
 cd ./build
