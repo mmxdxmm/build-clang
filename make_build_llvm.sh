@@ -25,9 +25,7 @@ cmake -G "Unix Makefiles" \
 ./llvm-project/llvm
 
 make -j8 \
-ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu- \
-CFLAGS="-Wno-unused-command-line-argument" \
-CXXFLAGS="-Wno-unused-command-line-argument"
+ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-
 
 #选项解析
 #export PATH:设置环境变量
