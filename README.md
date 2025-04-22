@@ -9,29 +9,7 @@
 * ### Debian/Ubuntu
 
   ```
-  sudo apt install bc \
-              binutils-dev \
-              bison \
-              build-essential \
-              ca-certificates \
-              ccache \
-              clang \
-              cmake \
-              curl \
-              file \
-              flex \
-              git \
-              libelf-dev \
-              libssl-dev \
-              libstdc++-$(apt list libstdc++6 2>/dev/null | grep -Eos '[0-9]+\.[0-9]+\.[0-9]+' | head -1 | cut -d . -f 1)-dev \
-              lld \
-              make \
-              ninja-build \
-              python3-dev \
-              texinfo \
-              u-boot-tools \
-              xz-utils \
-              zlib1g-dev
+  sudo apt update && sudo apt upgrade -y && sudo apt install -y git libssl-dev gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi build-essential libncurses5-dev bzip2 make gcc g++ grep bc curl bison flex openssl lzop unzip zlib1g-dev file ca-certificates ccache wget texinfo xz-utils libelf-dev zip libgmp-dev libncurses-dev gawk m4 libtinfo* cpio binutils-dev cmake ninja-build u-boot-tools python-is-python3 zstd clang llvm lld libstdc++-12-dev-arm64-cross
   ```
 
 * ### Fedora
