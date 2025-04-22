@@ -22,11 +22,14 @@ cmake -G "Unix Makefiles" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
+-DCMAKE_C_COMPILER_TARGET=aarch64-linux-gnu \
+-DCMAKE_CXX_COMPILER_TARGET=aarch64-linux-gnu \
 -DARCH=arm64 \
 -DSUBARCH=arm64 \
 -DLLVM=1 \
 -DCROSS_COMPILE=aarch64-linux-gnu- \
 -DCROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+-DCROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
 -DCLANG_TRIPLE=aarch64-linux-gnu- \
 -B tmp \
 ./llvm-project/llvm
