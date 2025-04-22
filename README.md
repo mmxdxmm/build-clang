@@ -1,9 +1,10 @@
 1、先配置运行环境
 
 * ### 安装最新的编译器
-  、、、
+  
+  ```
   wget https://apt.llvm.org/llvm.sh -O llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 20
-  、、、
+  ```
 
 * ### Debian/Ubuntu
 
