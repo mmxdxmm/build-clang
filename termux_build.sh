@@ -26,6 +26,8 @@ cmake -G "Ninja" \
 #-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 #-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 
+ninja -j8
+
 #选项解析
 #export PATH:设置环境变量
 #-G:设置构建器，make选"Unix Makefiles"，ninja选"Ninja"

@@ -19,15 +19,10 @@ cmake -G "Unix Makefiles" \
 -DCMAKE_C_COMPILER=$(which clang) \
 -DCMAKE_C_COMPILER_LAUNCHER=ccache \
 -DCMAKE_C_FLAGS="-Wno-unused-command-line-argument" \
-#-DCMAKE_EXE_LINKER_FLAGS="-L/data/data/com.termux/files/usr/glibc/lib -L/data/data/com.termux/files/usr/lib" \
-#-DCMAKE_SHARED_LINKER_FLAGS="-L/data/data/com.termux/files/usr/glibc/lib -L/data/data/com.termux/files/usr/lib" \
-#-DCMAKE_MODULE_LINKER_FLAGS="-L/data/data/com.termux/files/usr/glibc/lib -L/data/data/com.termux/files/usr/lib" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM-ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
-./llvm-project/llvm \
-#-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
-#-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
+./llvm-project/llvm
 
 make -j8 \
 ARCH=arm64 SUBARCH=arm64 O=out LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu- \
