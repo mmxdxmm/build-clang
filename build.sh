@@ -37,7 +37,7 @@ cmake -G "Ninja" \
 -DCMAKE_SHARED_LINKER_FLAGS="-L$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/33" \
 -DCMAKE_MODULE_LINKER_FLAGS="-L$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/33" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
--DLLVM-ENABLE_BOOTSTRAP=OFF \
+-DLLVM_ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
 -DCMAKE_C_COMPILER_TARGET=aarch64-linux-gnu \
 -DCMAKE_CXX_COMPILER_TARGET=aarch64-linux-gnu \
@@ -49,11 +49,14 @@ cmake -G "Ninja" \
 -DCROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
 -DCLANG_TRIPLE=aarch64-linux-gnu- \
 -B tmp \
+-DBUILD_SHARED_LIBS=ON \
+-DLLVM_ENABLE_PIC=ON \
+-DLIBCLANG_BUILD_STATIC=OFF \
 ./llvm-project/llvm \
 #-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 #-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 
-cd tmp && ninja -j8
+cd tmp && ninja -j8 && ninja install
 
 #选项解析
 #export PATH:设置环境变量
@@ -77,6 +80,10 @@ cd tmp && ninja -j8
 #-DLLVM_USE_LINKER:连接器位置，如/bin/ld
 #-CMAKE_LINKER:连接器位置
 #-DLLVM_ENABLE_LIBATOMIC:开启/关闭latomic检测
-#-DLLVM-ENABLE_BOOTSTRAP:开启/关闭多阶段构建，开启多阶段构建，会先编译clang，再用编译的clang构建其他项目
+#-DLLVM_ENABLE_BOOTSTRAP:开启/关闭多阶段构建，开启多阶段构建，会先编译clang，再用编译的clang构建其他项目
 #-DLLVM_DEFAULT_TARGET_TRIPLE:检查编译选项
+#-B:编译的中间文件存放位置
+#-DBUILD_SHARED_LIBS=ON:生成动态库
+#-DLLVM_ENABLE_PIC=ON:确保其他程序能调用
+#-DLIBCLANG_BUILD_STATIC=OFF:禁用生成静态库
 #./llvm-project/llvm:CMakeLists.txt的位置
