@@ -1,25 +1,11 @@
-if [ -f "android-ndk-r28b.zip" ]; then
-    echo "文件已存在，正在解压..."
-    yes | unzip android-ndk-r28b.zip
-else
-    echo "文件不存在，正在下载..."
-    wget -O android-ndk-r28b.zip "https://dl.google.com/android/repository/android-ndk-r28b-linux.zip"
-    if [ $? -eq 0 ]; then
-        echo "下载完成，正在解压..."
-        yes | unzip android-ndk-r28b.zip
-    else
-        echo "下载失败，请检查网络或链接是否正确。"
-    fi
-fi
-
 yes | tar -xvf electron-binutils-2.41.tar.xz
 BINUTILS_PATH=$PWD/electron-binutils-2.41/bin
 
-export PATH=$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/bin/:$BINUTILS_PATH:$PATH
+export PATH=/lib/llvm-20/bin:$BINUTILS_PATH:$PATH
 
 #grep -q "set(LLVM_VERSION_MAJOR 20.0.0)" ./llvm/CMakeLists.txt || echo "set(LLVM_VERSION_MAJOR 20.0.0)" >> ./llvm/CMakeLists.txt
 
-cmake -G "Ninja" \
+cmake -G "Unix Makefiles" \
 -DCMAKE_BUILD_TYPE=MinSizeRel \
 -DCMAKE_INSTALL_PREFIX=./out/clang \
 -DCLANG_VENDOR=aosp \
@@ -29,13 +15,10 @@ cmake -G "Ninja" \
 -DLLVM_ENABLE_PROJECTS="clang;lld;libc;compiler-rt" \
 -DCMAKE_CXX_COMPILER=$(which clang++) \
 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
--DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument --target=aarch64-linux-android33 -I$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include" \
+-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument" \
 -DCMAKE_C_COMPILER=$(which clang) \
 -DCMAKE_C_COMPILER_LAUNCHER=ccache \
--DCMAKE_C_FLAGS="-Wno-unused-command-line-argument --target=aarch64-linux-android33 -I$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include" \
--DCMAKE_EXE_LINKER_FLAGS="-L$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/33" \
--DCMAKE_SHARED_LINKER_FLAGS="-L$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/33" \
--DCMAKE_MODULE_LINKER_FLAGS="-L$PWD/android-ndk-r28b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/33" \
+-DCMAKE_C_FLAGS="-Wno-unused-command-line-argument" \
 -DLLVM_ENABLE_LIBATOMIC=OFF \
 -DLLVM_ENABLE_BOOTSTRAP=OFF \
 -DLLVM_DEFAULT_TARGET_TRIPLE=aarch64-linux-gnu \
@@ -49,11 +32,9 @@ cmake -G "Ninja" \
 -DCROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
 -DCLANG_TRIPLE=aarch64-linux-gnu- \
 -B tmp \
-./llvm-project/llvm \
-#-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
-#-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
+./llvm-project/llvm
 
-cd tmp && ninja -j8
+cd tmp && make -j8
 
 #选项解析
 #export PATH:设置环境变量
