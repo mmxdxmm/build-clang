@@ -12,7 +12,7 @@ cmake -G "Unix Makefiles" \
 -DLLVM_PARALLEL_COMPILE_JOBS=4 \
 -DLLVM_PARALLEL_LINK_JOBS=4 \
 -DLLVM_TARGETS_TO_BUILD="ARM;AArch64" \
--DLLVM_ENABLE_PROJECTS="clang;lld;libc;compiler-rt" \
+-DLLVM_ENABLE_PROJECTS="clang;lld;libc;compiler-rt;polly" \
 -DCMAKE_CXX_COMPILER=$(which clang++) \
 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
 -DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument" \
