@@ -34,7 +34,7 @@ cmake -G "Unix Makefiles" \
 -B tmp \
 -DBUILD_SHARED_LIBS=ON \
 -DLLVM_ENABLE_PIC=ON \
--DLIBCLANG_BUILD_STATIC=OFF \
+-DLIBCLANG_BUILD_STATIC=ON \
 ./llvm-project/llvm
 
 cd tmp && make -j8 && make install
@@ -66,5 +66,5 @@ cd tmp && make -j8 && make install
 #-B:编译的中间文件存放位置
 #-DBUILD_SHARED_LIBS=ON:生成动态库
 #-DLLVM_ENABLE_PIC=ON:确保其他程序能调用
-#-DLIBCLANG_BUILD_STATIC=OFF:禁用生成静态库
+#-DLIBCLANG_BUILD_STATIC=ON:生成静态库
 #./llvm-project/llvm:CMakeLists.txt的位置

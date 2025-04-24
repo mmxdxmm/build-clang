@@ -51,7 +51,7 @@ cmake -G "Ninja" \
 -B tmp \
 -DBUILD_SHARED_LIBS=ON \
 -DLLVM_ENABLE_PIC=ON \
--DLIBCLANG_BUILD_STATIC=OFF \
+-DLIBCLANG_BUILD_STATIC=ON \
 ./llvm-project/llvm \
 #-DLLVM_USE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
 #-CMAKE_LINKER=/data/user/0/com.termux/files/home/binutils/aarch64-unknown-linux-gnu/bin/ld \
@@ -85,5 +85,5 @@ cd tmp && ninja -j8 && ninja install
 #-B:编译的中间文件存放位置
 #-DBUILD_SHARED_LIBS=ON:生成动态库
 #-DLLVM_ENABLE_PIC=ON:确保其他程序能调用
-#-DLIBCLANG_BUILD_STATIC=OFF:禁用生成静态库
+#-DLIBCLANG_BUILD_STATIC=ON:生成静态库
 #./llvm-project/llvm:CMakeLists.txt的位置
