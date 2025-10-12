@@ -2,7 +2,7 @@
 
 1、克隆仓库
 
-git clone -b man https://github.com/mmxdxmm/build-clang.git build
+git clone -b main https://github.com/mmxdxmm/build-clang.git build
 
 
 2、进入项目
