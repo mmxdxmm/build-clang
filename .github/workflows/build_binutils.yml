@@ -60,5 +60,5 @@ jobs:
         with:
           name: out
           path: |
-            binutils.zip
+            binutils.tar.gz
             out.txt
