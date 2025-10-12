@@ -36,7 +36,6 @@ jobs:
             zstd clang lld \
             lz4
 
-      # LLVM-20 installation (commented out)
       - name: Download and install LLVM
         run: |
           mkdir -p clang
@@ -44,14 +43,21 @@ jobs:
           tar -xvf clang.tar.gz -C clang
           export PATH="$PWD/clang/bin:$PATH"
 
+      - name: Download binutils
+        run: |
+          cd src
+          git clone https://android.googlesource.com/toolchain/binutils
+          cd ..
+      
       - name: Build
         run: |
-          bash build_binutils.sh
+          bash build_binutils.sh > out.txt
           zip -r -y binutils.zip out/binutils
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: binutils
+          name: out
           path: |
             binutils.zip
+            out.txt
