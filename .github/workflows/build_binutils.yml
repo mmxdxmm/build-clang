@@ -53,7 +53,7 @@ jobs:
         run: |
           bash build_binutils.sh > out.txt
           cd out
-          tar -cvzf binutils.tar.gz binutils
+          tar -cvzfh binutils.tar.gz binutils
           cp binutils.tar.gz ../binutils.tar.gz
 
       - name: Upload Artifacts
