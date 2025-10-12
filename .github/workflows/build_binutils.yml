@@ -52,7 +52,8 @@ jobs:
       - name: Build
         run: |
           bash build_binutils.sh > out.txt
-          zip -r -y binutils.zip out/binutils
+          cd out
+          tar -cvzf binutils.tar.gz binutils
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
