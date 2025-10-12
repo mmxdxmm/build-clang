@@ -33,8 +33,7 @@ class BinutilsBuilder(Builder):
         if tc_build.utils.libc_is_musl():
             self.configure_flags.append('--disable-gprofng')
         self.configure_vars = {
-            'CC': 'clang',
-            'CXX': 'clang++',
+            'LLVM': '1',
         }
         self.extra_targets = []
         self.native_arch = ''
