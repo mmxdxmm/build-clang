@@ -4,3 +4,8 @@
 -t arm aarch64 \
 -i /root/binutils \
 --show-build-commands
+
+out_dir=$PWD
+cd /root
+zip -r -9 binutils.zip binutils
+cp binutils.zip $PWD/binutils.zip
