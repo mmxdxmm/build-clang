@@ -8,4 +8,4 @@
 out_dir=$PWD
 cd /root
 zip -r -9 binutils.zip binutils
-cp binutils.zip $PWD/binutils.zip
+cp binutils.zip $out_dir/binutils.zip
