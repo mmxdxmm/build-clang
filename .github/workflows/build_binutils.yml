@@ -38,10 +38,8 @@ jobs:
 
       - name: Download and install LLVM
         run: |
-          mkdir -p clang
-          wget -nv -O clang.tar.gz "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/ndk-r29/clang-r563880c.tar.gz"
-          tar -xvf clang.tar.gz -C clang
-          export PATH="$PWD/clang/bin:$PATH"
+          wget https://apt.llvm.org/llvm.sh -O llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 20
+          export PATH="/lib/llvm-20/bin:$PATH"
 
       - name: Download binutils
         run: |
@@ -52,10 +50,6 @@ jobs:
       - name: Build
         run: |
           sudo bash build_binutils.sh 2> out.txt
-          out_dir=$PWD
-          cd /root
-          zip -r -9 binutils.zip binutils
-          cp binutils.zip $PWD/binutils.zip
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
