@@ -1,4 +1,7 @@
-		   README for GNU development tools
+仓库来自
+https://android.googlesource.com/toolchain/binutils
+
+README for GNU development tools
 
 This directory contains various GNU compilers, assemblers, linkers, 
 debuggers, etc., plus their support routines, definitions, and documentation.
