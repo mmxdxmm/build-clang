@@ -14,7 +14,7 @@ class BinutilsBuilder(Builder):
     def __init__(self):
         super().__init__()
 
-        self.cflags = ['-O3',
+        self.cflags = ['-Os',
         '-Wno-unused-command-line-argument',
         ]
         self.configure_flags = [
@@ -33,8 +33,7 @@ class BinutilsBuilder(Builder):
         if tc_build.utils.libc_is_musl():
             self.configure_flags.append('--disable-gprofng')
         self.configure_vars = {
-            'CC': 'clang',
-            'CXX': 'clang++',
+            'LLVM': '1',
         }
         self.extra_targets = []
         self.native_arch = ''
