@@ -39,7 +39,6 @@ jobs:
       - name: Download and install LLVM
         run: |
           wget https://apt.llvm.org/llvm.sh -O llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 20
-          export PATH="/lib/llvm-20/bin:$PATH"
 
       - name: Download binutils
         run: |
@@ -49,7 +48,8 @@ jobs:
       
       - name: Build
         run: |
-          sudo bash build_binutils.sh 2> out.txt
+          export PATH="/lib/llvm-20/bin:$PATH"
+          sudo bash build_binutils.sh
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
