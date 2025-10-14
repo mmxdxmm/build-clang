@@ -1,4 +1,8 @@
-		   README for GNU development tools
+补丁来自
+https://github.com/richfelker/musl-cross-make.git
+
+
+README for GNU development tools
 
 This directory contains various GNU compilers, assemblers, linkers, 
 debuggers, etc., plus their support routines, definitions, and documentation.
