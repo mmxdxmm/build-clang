@@ -2,5 +2,5 @@
 -B src/binutils* \
 -b tmp/binutils \
 -t arm aarch64 \
--i out/binutils \
+-i /root/binutils \
 --show-build-commands
