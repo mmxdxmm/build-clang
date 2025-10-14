@@ -46,7 +46,7 @@ jobs:
       - name: Download binutils
         run: |
           cd src
-          git clone https://android.googlesource.com/toolchain/binutils
+          git clone -b binutils-2.33.1 --single-branch --depth 1 https://github.com/mmxdxmm/build-clang.git binutils
           cd ..
       
       - name: Build
