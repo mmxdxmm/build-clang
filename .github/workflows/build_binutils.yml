@@ -51,10 +51,11 @@ jobs:
       
       - name: Build
         run: |
-          bash build_binutils.sh 2> out.txt
-          cd out
+          sudo bash build_binutils.sh 2> out.txt
+          out_dir=$PWD
+          cd /root
           zip -r -9 binutils.zip binutils
-          cp binutils.zip ../binutils.zip
+          cp binutils.zip $PWD/binutils.zip
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
