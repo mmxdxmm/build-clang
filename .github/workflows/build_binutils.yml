@@ -49,7 +49,7 @@ jobs:
       - name: Build
         run: |
           export PATH="/lib/llvm-20/bin:$PATH"
-          sudo bash build_binutils.sh 2> out.txt
+          bash build_binutils.sh 2> out.txt
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
