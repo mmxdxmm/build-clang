@@ -34,8 +34,8 @@ class BinutilsBuilder(Builder):
             self.configure_flags.append('--disable-gprofng')
         self.configure_vars = {
             'LLVM': '1',
-            'CC': 'clang -flto=thin',
-            'CXX': 'clang++ -flto=thin'
+            'CC': 'clang -flto',
+            'CXX': 'clang++ -flto'
         }
         self.extra_targets = []
         self.native_arch = ''
