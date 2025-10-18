@@ -1,3 +1,5 @@
+export PATH="/lib/llvm-20/bin:$PATH"
+
 ./build-binutils.py \
 -B src/binutils* \
 -b tmp/binutils \
