@@ -34,12 +34,12 @@ class BinutilsBuilder(Builder):
             self.configure_flags.append('--disable-gprofng')
         self.configure_vars = {
             'LLVM': '1',
-            'CC': 'ccache clang -Os -ffunction-sections -fdata-sections -Wno-error',
-            'CXX': 'ccache clang++ -Os -ffunction-sections -fdata-sections -Wno-error',
+            'CC': 'ccache clang -Os -flto -ffunction-sections -fdata-sections -Wno-error',
+            'CXX': 'ccache clang++ -Os -flto -ffunction-sections -fdata-sections -Wno-error',
             'LD': 'ld.lld --strip-debug --gc-sections',
             'HOSTLD': 'ld.lld --strip-debug --gc-sections',
-            'HOSTCC': 'ccache clang -Os -ffunction-sections -fdata-sections -Wno-error',
-            'HOSTCXX': 'ccache clang++ -Os -ffunction-sections -fdata-sections -Wno-error',
+            'HOSTCC': 'ccache clang -Os -flto -ffunction-sections -fdata-sections -Wno-error',
+            'HOSTCXX': 'ccache clang++ -Os -flto -ffunction-sections -fdata-sections -Wno-error',
             'AR': 'llvm-ar',
             'NM': 'llvm-nm',
             'STRIP': 'llvm-strip',
